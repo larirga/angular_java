@@ -39,6 +39,11 @@ public class UserService {
 
   @Transactional
   public UserDTO insert(UserDTO dto) {
+    User existingUser = repository.findByEmail(dto.getEmail());
+    if (existingUser != null) {
+      throw new DataBaseException("Email already exists");
+    }
+
     User entity = new User();
     entity.setName(dto.getName());
     entity.setEmail(dto.getEmail());

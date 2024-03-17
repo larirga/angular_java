@@ -3,6 +3,7 @@ package com.larissa.formapp.services;
 import com.larissa.formapp.DTO.UserDTO;
 import com.larissa.formapp.entities.User;
 import com.larissa.formapp.repositories.UserRepository;
+import com.larissa.formapp.services.exceptions.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ public class UserService {
   public UserDTO findById(Long id) {
     Optional<User> obj = repository.findById(id);
 
-    User entity = obj.get();
+    User entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
     return new UserDTO(entity);
   }
 }

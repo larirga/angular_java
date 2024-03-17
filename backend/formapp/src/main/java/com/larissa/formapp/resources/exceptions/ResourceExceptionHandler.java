@@ -1,5 +1,6 @@
 package com.larissa.formapp.resources.exceptions;
 
+import com.larissa.formapp.services.exceptions.DataBaseException;
 import com.larissa.formapp.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Instant;
@@ -20,5 +21,17 @@ public class ResourceExceptionHandler {
     err.setPath(request.getRequestURI());
 
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+  }
+
+  @ExceptionHandler(DataBaseException.class)
+  public ResponseEntity<StandardError> database(DataBaseException e, HttpServletRequest request) {
+
+    StandardError err = new StandardError();
+    err.setTimestamp(Instant.now());
+    err.setStatus(HttpStatus.BAD_REQUEST.value());
+    err.setError("Database exception");
+    err.setPath(request.getRequestURI());
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
   }
 }

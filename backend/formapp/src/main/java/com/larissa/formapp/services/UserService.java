@@ -3,13 +3,16 @@ package com.larissa.formapp.services;
 import com.larissa.formapp.DTO.UserDTO;
 import com.larissa.formapp.entities.User;
 import com.larissa.formapp.repositories.UserRepository;
+import com.larissa.formapp.services.exceptions.DataBaseException;
 import com.larissa.formapp.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -55,6 +58,20 @@ public class UserService {
       return new UserDTO(entity);
     } catch(EntityNotFoundException e) {
       throw new ResourceNotFoundException("Id not found: " + id);
+    }
+  }
+
+  // Estou utilizando DataIntegrityViolationException caso o usuario delete algo que afete a integridade do banco.
+  @Transactional(propagation = Propagation.SUPPORTS)
+  public void delete(Long id) {
+    if(!repository.existsById(id)) {
+      throw new ResourceNotFoundException("Id not found: " + id);
+    }
+
+    try {
+      repository.deleteById(id);
+    } catch(DataIntegrityViolationException e) {
+      throw new DataBaseException("Integrity Violation");
     }
   }
 }

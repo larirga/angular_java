@@ -1,5 +1,6 @@
 package com.larissa.formapp.resources;
 
+import com.larissa.formapp.DTO.UserDTO;
 import com.larissa.formapp.entities.User;
 import com.larissa.formapp.services.UserService;
 import java.util.ArrayList;
@@ -16,8 +17,8 @@ public class UserResource {
   @Autowired
   private UserService service;
   @GetMapping
-  public ResponseEntity<List<User>> findAll() {
-    List<User> list = service.findAll();
+  public ResponseEntity<List<UserDTO>> findAll() {
+    List<UserDTO> list = service.findAll();
     return ResponseEntity.ok().body(list);
   }
 }

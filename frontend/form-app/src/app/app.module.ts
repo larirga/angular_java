@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { UserInputComponent } from './user-input/user-input.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserInputComponent, UserListComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

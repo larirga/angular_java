@@ -5,7 +5,7 @@
         <h3 class="text-center">Adicione Nome e Email</h3>
       </div>
       <div class="card-body">
-        <form [formGroup]="formUser">
+        <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="name" />
@@ -22,7 +22,7 @@
           </div>
 
           <button
-            type="button"
+            type="submit"
             class="btn btn-primary"
             [disabled]="formUser.invalid"
           >

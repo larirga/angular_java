@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user-input',
@@ -9,7 +10,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserInputComponent implements OnInit {
   public formUser: FormGroup;
-  constructor(private fb: FormBuilder, private toast: ToastrService) {
+  constructor(
+    private fb: FormBuilder,
+    private toast: ToastrService,
+    private userService: UserService
+  ) {
     this.formUser = this.createFormUser();
   }
 
@@ -25,5 +30,20 @@ export class UserInputComponent implements OnInit {
   public isFormControlInvalid(controlName: string): boolean {
     const control = this.formUser.get(controlName);
     return !!(control && control.invalid && (control.touched || control.dirty));
+  }
+
+  onSubmit() {
+    if (this.formUser.valid) {
+      this.userService.addUser(this.formUser.value).subscribe(
+        () => {
+          this.toast.success('Usuário adicionado com sucesso!');
+          this.formUser.reset();
+        },
+        (error: any) => {
+          this.toast.error('Erro ao adicionar usuário.');
+          console.error(error);
+        }
+      );
+    }
   }
 }

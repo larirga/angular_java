@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserInputComponent } from './user-input/user-input.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [FormsModule],
   bootstrap: [AppComponent],

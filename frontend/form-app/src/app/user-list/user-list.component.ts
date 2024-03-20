@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user-input/user.service'; // Importe o serviço para buscar os usuários
+import { UserService } from '../user-input/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -18,6 +18,12 @@ export class UserListComponent implements OnInit {
   loadUsers() {
     this.userService.getAllUsers().subscribe((data: any) => {
       this.users = data;
+    });
+  }
+
+  deleteUser(userId: number) {
+    this.userService.deleteUser(userId).subscribe(() => {
+      this.users = this.users.filter((user) => user.id !== userId);
     });
   }
 }

@@ -3,6 +3,11 @@
 ### **Spring Boot v3.2.2**
 ### **JDK 17.0.7**
 
+## Instale as dependências Maven
+```bash
+mvn install
+```
+
 #### Dependências Maven
 #### Arquivo pom.xml com dependências adicionadas
 ```
@@ -34,6 +39,13 @@
 </dependency>
 
 ```
+
+## Rode a aplicação spring boot na raiz FormappApplication
+
+## Banco de dados em memória H2
+### Para ter acesso ao banco H2 navegue por `http://localhost:8080/h2-console`
+### Para ter acesso ao objeto json navegue por `http://localhost:8080/user`
+
 
 ## SQL para seed da base de dados de teste
 

@@ -1,17 +1,17 @@
-# Recursos Frontend
+# Frontend recursos
 
 ### Esse projeto foi gerado com:
 
 - ### [Angular CLI](https://github.com/angular/angular-cli) versão **12.2.18**
 - ### Node versão **12.14.1**
 
-## Install the NPM dependencies at the root of the project.
+## Instale as dependências do NPM na raiz do projeto.
 
 ```bash
 npm install
 ```
 
-## Development server
+## Servidor de desenvolvimento
 
 ### Run dev server
 
@@ -19,11 +19,11 @@ npm install
 ng serve
 ```
 
-## Navigate to `http://localhost:4200/`.
+## Navegue para `http://localhost:4200/`.
 
 ## Code scaffolding
 
-### Generate a new component
+### Gerar um novo componente
 
 ```
 ng generate component component-name

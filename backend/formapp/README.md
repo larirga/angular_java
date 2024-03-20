@@ -3,7 +3,7 @@
 ### **Spring Boot v3.2.2**
 ### **JDK 17.0.7**
 
-## Instale as dependências Maven
+## Instale as dependências Maven no projeto
 ```bash
 mvn install
 ```
@@ -39,6 +39,14 @@ mvn install
 </dependency>
 
 ```
+#### Dependência de teste
+````
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-test</artifactId>
+	<scope>test</scope>
+</dependency>
+````
 
 ## Rode a aplicação spring boot na raiz FormappApplication
 

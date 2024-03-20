@@ -19,7 +19,7 @@ npm install
 ng serve
 ```
 
-## Navegue para `http://localhost:4200/`.
+## Navegue para `http://localhost:4200/user`.
 
 ## Code scaffolding
 

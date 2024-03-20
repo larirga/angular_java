@@ -40,7 +40,7 @@ export class UserInputComponent implements OnInit {
           this.formUser.reset();
         },
         (error: any) => {
-          this.toast.error('Erro ao adicionar usuário.');
+          this.toast.error('Esse usuário já existe em nosso banco de dados.');
           console.error(error);
         }
       );
